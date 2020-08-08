@@ -19,6 +19,10 @@ const Landing = () => {
     navigate('GiveClasses');
   };
 
+  const handleNavigateToStudyScreens = () => {
+    navigate('Study');
+  };
+
   return (
     <View style={styles.container}>
       <Image source={landingImg} style={styles.banner} />
@@ -31,7 +35,10 @@ const Landing = () => {
       </Text>
 
       <View style={styles.buttonsContainer}>
-        <RectButton style={[styles.button, styles.buttonPrimary]}>
+        <RectButton
+          onPress={handleNavigateToStudyScreens}
+          style={[styles.button, styles.buttonPrimary]}
+        >
           <Image source={studyIcon} />
 
           <Text style={styles.buttonText}>Estudar</Text>
