@@ -7,7 +7,7 @@ import styles from './styles';
 
 const TeachersList: React.FC = () => (
   <View style={styles.container}>
-    <PageHeader />
+    <PageHeader title="Proffys disponíveis" />
   </View>
 );
 

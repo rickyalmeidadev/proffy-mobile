@@ -7,18 +7,28 @@ import logoImg from '../../assets/images/logo.png';
 
 import styles from './styles';
 
-const PageHeader: React.FC = () => (
-  <View style={styles.container}>
-    <View style={styles.topBar}>
-      <BorderlessButton>
-        <Image source={backIcon} resizeMode="contain" />
-      </BorderlessButton>
+interface IProps {
+  title: string;
+}
 
-      <Image source={logoImg} resizeMode="contain" />
+const PageHeader: React.FC<IProps> = ({ title }) => {
+  const handleNavigateBack = () => {
+
+  };
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.topBar}>
+        <BorderlessButton onPress={handleNavigateBack}>
+          <Image source={backIcon} resizeMode="contain" />
+        </BorderlessButton>
+
+        <Image source={logoImg} resizeMode="contain" />
+      </View>
+
+      <Text style={styles.title}>{title}</Text>
     </View>
-
-    <Text style={styles.title}>Proffys disponíveis</Text>
-  </View>
-);
+  );
+};
 
 export default PageHeader;
