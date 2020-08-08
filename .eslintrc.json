@@ -30,6 +30,7 @@
         "no-console": "off",
         "no-use-before-define": "off",
         "react/style-prop-object": "off",
-        "camelcase": "off"
+        "camelcase": "off",
+        "import/no-extraneous-dependencies": "off"
     }
 }
