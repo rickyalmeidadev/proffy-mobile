@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View, Text, Image,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { RectButton } from 'react-native-gesture-handler';
+
+import Client from '../../services/api';
 
 import styles from './styles';
 
@@ -12,7 +14,22 @@ import studyIcon from '../../assets/images/icons/study.png';
 import giveClassesIcon from '../../assets/images/icons/give-classes.png';
 import heartIcon from '../../assets/images/icons/heart.png';
 
+const { getConnections } = new Client();
+
 const Landing = () => {
+  const [totalConnections, setTotalConnections] = useState(0);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await getConnections();
+        setTotalConnections(response.data.total);
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, []);
+
   const { navigate } = useNavigation();
 
   const handleNavigateToGiveClassesScreen = () => {
@@ -55,7 +72,7 @@ const Landing = () => {
       </View>
 
       <Text style={styles.totalConnections}>
-        Total de 285 conexões já realizadas {' '}
+        Total de {totalConnections} conexões já realizadas {' '}
         <Image source={heartIcon} />
       </Text>
     </View>
